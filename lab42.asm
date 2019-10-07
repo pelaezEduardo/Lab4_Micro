@@ -43,49 +43,34 @@ PROGRAMA:
     sub al, 30h
     mov num2, al
     
+            ; imprimir un salto de linea antes de mostrar un resultado
+    MOV DL, 10
+    MOV AH, 02
+    INT 21h
+    MOV DL, 13
+    INT 21H
+    XOR AX, AX  
+    
     MOV BL, NUM1
+    MOV AL, NUM2
     CMP BL, AL
     JE SONIGUALES
     JG ESMAYOR
     JL ESMENOR
 
 ESMENOR: 
-        ; imprimir un salto de linea antes de mostrar un resultado
-    MOV DL, 10
-    MOV AH, 02
-    INT 21h
-    MOV DL, 13
-    INT 21H
-    XOR AX, AX  
-
     mov ah, 09 
     lea dx, MENOR
     int 21h 
     JMP FIN
         
 ESMAYOR:  
-    ; imprimir un salto de linea antes de mostrar un resultado
-    MOV DL, 10
-    MOV AH, 02
-    INT 21h
-    MOV DL, 13
-    INT 21H
-    XOR AX, AX  
-    
     mov ah, 09 
     lea dx, MAYOR 
     int 21h 
     JMP FIN 
     
-SONIGUALES: 
-    ; imprimir un salto de linea antes de mostrar un resultado
-    MOV DL, 10
-    MOV AH, 02
-    INT 21h
-    MOV DL, 13
-    INT 21H
-    XOR AX, AX  
-    
+SONIGUALES:   
     mov ah, 09
     lea dx, IGUAL
     int 21h      
